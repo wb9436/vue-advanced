@@ -1,0 +1,38 @@
+$color-white: white !default; //!default是用来指定变量默认值的
+$color-line: rgba(146, 146, 146, 0.25) !default;
+$color-big: #484848 !default;
+$color-theme: #EE735D !default;
+$color-bg: #F2F2F2 !default;
+
+@mixin calcWidth($w) { //计算宽度
+  width: calc(100vw - #{$w});
+}
+
+@mixin calcHeight($h) { //计算高度
+  height: calc(100vh - #{$h});
+}
+
+@mixin sc($size, $color) {
+  font-size: $size;
+  color: $color;
+}
+
+@mixin ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin rowWrap($row) {
+  white-space: normal;
+  word-wrap: break-word;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $row;
+  overflow: hidden;
+}
+
+@mixin skew($deg) {
+  transform: skew($deg);
+}
+
+
