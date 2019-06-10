@@ -171,3 +171,38 @@ this.$el.querySelector('.content').scrollTop = 0
   <slot name="child-slot"></slot>
 </div>
 ```
+
+## 十、Vue-router使用history模式，发布tomcat访问404解决办法
+#### 1.创建WEB-INF文件夹，创建web.xml文件，内容如下：
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee/web-app_2_5.xsd"
+	id="scplatform" version="2.5">
+	
+	<display-name>/</display-name>
+	<error-page>
+	   <error-code>404</error-code>
+	   <location>/index.html</location>
+	</error-page>
+	
+</web-app>
+```
+#### 2.webpack插件信息中添加打包配置，避免每次发布手动创建该文件，打包配置文件webpack.prod.conf.js，添加内容如下：
+```
+// copy custom static assets
+new CopyWebpackPlugin([
+  {
+    from: path.resolve(__dirname, '../static'),
+    to: config.build.assetsSubDirectory,
+    ignore: ['.*']
+  },
+  //添加内容
+  {
+    from: path.resolve(__dirname, '../WEB-INF'),
+    to: 'WEB-INF',
+    ignore: ['.*']
+  }
+])
+```
