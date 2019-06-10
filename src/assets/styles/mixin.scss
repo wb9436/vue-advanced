@@ -3,6 +3,7 @@ $color-line: rgba(146, 146, 146, 0.25) !default;
 $color-big: #484848 !default;
 $color-theme: #EE735D !default;
 $color-bg: #F2F2F2 !default;
+$color-shadow: #e5e5e5 !default;
 
 @mixin calcWidth($w) { //计算宽度
   width: calc(100vw - #{$w});

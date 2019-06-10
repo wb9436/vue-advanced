@@ -32,6 +32,7 @@ module.exports = {
     "padded-blocks": [0, "never"], //块内行首行尾是否空行
     'no-trailing-spaces': 0, //行尾空格校验
     'spaced-comment': 0, //注释风格不要有空格什么的
+    // 'vue/no-shared-component-data': 0, //// 组件的 data 属性的值必须是一个函数
     'no-multiple-empty-lines': [2, { 'max': 5}] //禁止出现多行空行
   }
 }

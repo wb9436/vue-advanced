@@ -7,6 +7,10 @@ import Query from '../view/param/query'
 import Rest from '../view/param/rest'
 import HeightLayout from '../view/layout/heightLayout'
 
+import Home from '../pages/home/index'
+import Mine from '../pages/mine/index'
+
+
 Vue.use(Router)
 
 const router = new Router({
@@ -14,6 +18,12 @@ const router = new Router({
   routes: [
     {
       path: '/', redirect: '/index'
+    },
+    {
+      path: '/home', name: 'home', component: Home, meta: {title: '首页'}
+    },
+    {
+      path: '/mine', name: 'mine', component: Mine, meta: {title: '我的'}
     },
     {
       path: '/index', name: 'index', component: Index, meta: {title: '首页'}
