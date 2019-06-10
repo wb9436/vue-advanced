@@ -155,3 +155,19 @@ this.$el.querySelector('.content').scrollTop = 0
 方式二：
   :class="{'footer': hasFooter, 'hidden': !hasFooter}"
 ```
+
+## 九、Vue类似React向组件传入dom元素，使用``<slot name="child"></slot>``接收dom元素
+```
+//子组件引用
+<child>
+  //传入dom元素
+  <div slot="child-slot">
+  </div>
+</child>
+
+子组件
+<div>
+  //使用slot接收父组件中传入的dom元素
+  <slot name="child-slot"></slot>
+</div>
+```
