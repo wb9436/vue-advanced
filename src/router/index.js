@@ -7,6 +7,7 @@ import Query from '../view/param/query'
 import Rest from '../view/param/rest'
 import HeightLayout from '../view/layout/heightLayout'
 
+import Error from '../pages/error/index'
 import Home from '../pages/home/index'
 import Mine from '../pages/mine/index'
 
@@ -42,11 +43,19 @@ const router = new Router({
     },
     {
       path: '/layout/height', name: 'layout/height', component: HeightLayout, meta: {title: '测试高度分块布局'}
+    },
+    {
+      path: '/error', name: 'error', component: Error, meta: {title: '页面数据异常'}
     }
   ]
 })
 // 设置页面标题
 router.beforeEach((to, from, next) => { // beforeEach是router的钩子函数，在进入路由前执行
+  if (to.matched.length === 0) {
+    console.error('页面不存在：' + to.path)
+    next('/error')
+    return
+  }
   if (to.meta.title) { // 判断是否有标题
     document.title = to.meta.title
   }

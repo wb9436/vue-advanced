@@ -206,3 +206,24 @@ new CopyWebpackPlugin([
   }
 ])
 ```
+
+## 十一、全局路由守卫，可用于错误路由拦截及全局登录校验配置
+```
+router.beforeEach((to, from, next) => {
+  let isLogin = Vue.prototype.$loginInfo.info.is_login
+  if (to.matched.length === 0) { //没有匹配到当前路由
+    next('/error')
+  } else if (!isLogin && to.path !== '/login' && to.path !== '/register' && to.path !== '/password') {
+    //如果没有登录，跳转到登录页面
+    next('/login')
+  } else {
+    if ((to.path === '/login' || to.path === '/register' || to.path === '/password' || to.path === '/error') && isLogin) { 
+      //如果已经登录，却尝试访问登录页面或者错误页面，将继续保持原本的页面
+       next(from.path)  
+    } else {
+      next()
+    }
+  }
+  // next()
+})
+```
