@@ -1,6 +1,6 @@
 @import "mixin";
 
-#app, .page, .tab-bar-page {
+#app, .page {
   width: 100vw;
   height: 100vh;
   background: $color-white;
@@ -17,13 +17,4 @@
 
 .hidden {
   display: none !important;
-}
-
-
-.tab-content {
-  width: 100%;
-}
-
-.tab-bar {
-  box-shadow: 0 -2px $color-shadow;
 }
