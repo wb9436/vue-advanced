@@ -16,6 +16,11 @@
         msg: '首页'
       }
     },
+    created () {
+      const {isWeiXin, logInfo, windowHeight} = this.$store.state.app
+      console.log(isWeiXin, logInfo, windowHeight)
+      console.log(this.$store.state.app.logInfo)
+    },
     methods: {
       clickLifeCycle (id) {
         this.$router.push({path: '/lifeCycle', query: {id: id}})
@@ -37,5 +42,5 @@
 </script>
 
 <style scoped lang="scss">
-  @import "index";
+  @import "./index";
 </style>

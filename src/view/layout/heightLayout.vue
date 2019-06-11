@@ -43,5 +43,5 @@
 </script>
 
 <style lang="scss" scoped>
-  @import "heightLayout";
+  @import "./heightLayout";
 </style>

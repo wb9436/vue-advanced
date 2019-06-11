@@ -3,6 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import store from './store/index'
 import './assets/styles/base.scss'
 
 Vue.config.productionTip = false //阻止启动生产消息
@@ -22,6 +23,7 @@ window.onresize = function () { // onresize 事件会在窗口或框架被调整
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })
