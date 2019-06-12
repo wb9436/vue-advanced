@@ -1,26 +1,26 @@
 <template>
-  <div :class="isOpened ? 'address-layout':'address-layout address-layout--closed'">
-    <div class='address-layout__overlay' @click="handleCancel" />
+  <div :class="isOpened ? 'address-layout':'address-layout address-layout--closed'" @touchmove="handleTouchMove" >
+    <div class='address-layout__overlay' @click="handleCancel"/>
     <div class='address-layout__container'>
       <div class='layout-header'>
         <div class='cancel' @click="handleCancel">取消</div>
         <div class='title'>选择任务地址</div>
         <div class='confirm' @click="handleConfirm">确定</div>
       </div>
-      <div class='layout-body'>
+      <div class='layout-body' >
         <div class='address-scroll'>
-          <div class='area-box' @touchmove="handleTouchMove"></div>
-          <div class='area-container' id="pro"  @scroll="onProScroll" @touchmove="handleTouchMove" @touchstart="onTouchStart('pro')">
+          <div class='area-box'/>
+          <div class='area-container' id="pro"  @scroll="onProScroll" @touchstart="onTouchStart('pro')">
             <div class='area-list'>
               <div :key="index" class='area-item' v-for="(item, index) in pro.district">{{item}}</div>
             </div>
           </div>
-          <div class='area-container' id="city" @scroll="onCityScroll" @touchmove="handleTouchMove" @touchstart="onTouchStart('city')">
+          <div class='area-container' id="city" @scroll="onCityScroll" @touchstart="onTouchStart('city')">
             <div class='area-list'>
               <div :key="index" class='area-item' v-for="(item, index) in city.district">{{item}}</div>
             </div>
           </div>
-          <div class='area-container' id="area" @scroll="onAreaScroll" @touchmove="handleTouchMove" @touchstart="onTouchStart('area')">
+          <div class='area-container' id="area" @scroll="onAreaScroll" @touchstart="onTouchStart('area')">
             <div class='area-list'>
               <div :key="index" class='area-item' v-for="(item, index) in area.district">{{item}}</div>
             </div>

@@ -85,7 +85,8 @@
 }
 
 .area-container {
-  width: 112Px;
+  //width: 112Px;
+  flex: 1;
   height: 200Px;
   overflow-y: scroll;
 
