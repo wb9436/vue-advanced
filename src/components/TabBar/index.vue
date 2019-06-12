@@ -48,8 +48,8 @@
       }
     },
     methods: {
-      openTabPage(idx, path) {
-        this.$router.push({path: path})
+      openTabPage (idx, path) {
+        this.$router.push({ path: path })
       }
     }
   }

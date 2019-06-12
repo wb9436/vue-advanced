@@ -1,0 +1,12 @@
+@import "../../assets/styles/mixin";
+
+.btn {
+  margin: 0 85px;
+  width: auto;
+  height: 100px;
+  border-radius: 20px;
+  text-align: center;
+  line-height: 90px;
+  border: 2px solid $color-line;
+  @include sc(36px, $color-big);
+}

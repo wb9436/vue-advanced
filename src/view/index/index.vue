@@ -17,25 +17,25 @@
       }
     },
     created () {
-      const {isWeiXin, logInfo, windowHeight} = this.$store.state.app
+      const { isWeiXin, logInfo, windowHeight } = this.$store.state.app
       console.log(isWeiXin, logInfo, windowHeight)
       console.log(this.$store.state.app.logInfo)
     },
     methods: {
       clickLifeCycle (id) {
-        this.$router.push({path: '/lifeCycle', query: {id: id}})
+        this.$router.push({ path: '/lifeCycle', query: { id: id } })
       },
       clickParamTypeTransfer (id) {
-        this.$router.push({name: 'param', params: {id: id}})
+        this.$router.push({ name: 'param', params: { id: id } })
       },
       clickQueryTypeTransfer (id) {
-        this.$router.push({path: '/query', query: {id: id}})
+        this.$router.push({ path: '/query', query: { id: id } })
       },
       clickRestTypeTransfer (id) {
-        this.$router.push({path: `/rest/${id}`})
+        this.$router.push({ path: `/rest/${id}` })
       },
       clickLayoutHeight (id) {
-        this.$router.push({path: '/layout/height', query: {id: id}})
+        this.$router.push({ path: '/layout/height', query: { id: id } })
       }
     }
   }

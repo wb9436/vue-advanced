@@ -10,7 +10,7 @@ const app = {
     }
   },
   actions: {
-    SaveLogInfo ({commit}, logInfo) {
+    SaveLogInfo ({ commit }, logInfo) {
       commit('SET_LOGIN_INFO', logInfo)
     }
   }

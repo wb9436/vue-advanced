@@ -14,7 +14,7 @@
     },
     data () {
       return {
-
+        message: '你好'
       }
     },
     methods: {

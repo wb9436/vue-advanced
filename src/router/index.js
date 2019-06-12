@@ -10,7 +10,7 @@ import HeightLayout from '../view/layout/heightLayout'
 import Error from '../pages/error/index'
 import Home from '../pages/home/index'
 import Mine from '../pages/mine/index'
-
+import Test from '../pages/test/test'
 
 Vue.use(Router)
 
@@ -21,31 +21,34 @@ const router = new Router({
       path: '/', redirect: '/index'
     },
     {
-      path: '/home', name: 'home', component: Home, meta: {title: '首页'}
+      path: '/home', name: 'home', component: Home, meta: { title: '首页' }
     },
     {
-      path: '/mine', name: 'mine', component: Mine, meta: {title: '我的'}
+      path: '/mine', name: 'mine', component: Mine, meta: { title: '我的' }
     },
     {
-      path: '/index', name: 'index', component: Index, meta: {title: '首页'}
+      path: '/test', name: 'Test', component: Test, meta: { title: '测试' }
     },
     {
-      path: '/lifeCycle', name: 'lifeCycle', component: LifeCycle, meta: {title: '测试vue生命周期'}
+      path: '/index', name: 'index', component: Index, meta: { title: '首页' }
     },
     {
-      path: '/param', name: 'param', component: Param, meta: {title: '测试Vue Param传递参数'}
+      path: '/lifeCycle', name: 'lifeCycle', component: LifeCycle, meta: { title: '测试vue生命周期' }
     },
     {
-      path: '/query', name: 'query', component: Query, meta: {title: '测试Vue Query传递参数'}
+      path: '/param', name: 'param', component: Param, meta: { title: '测试Vue Param传递参数' }
     },
     {
-      path: '/rest/:id', name: 'rest', component: Rest, meta: {title: '测试Vue Rest传递参数'}
+      path: '/query', name: 'query', component: Query, meta: { title: '测试Vue Query传递参数' }
     },
     {
-      path: '/layout/height', name: 'layout/height', component: HeightLayout, meta: {title: '测试高度分块布局'}
+      path: '/rest/:id', name: 'rest', component: Rest, meta: { title: '测试Vue Rest传递参数' }
     },
     {
-      path: '/error', name: 'error', component: Error, meta: {title: '页面数据异常'}
+      path: '/layout/height', name: 'layout/height', component: HeightLayout, meta: { title: '测试高度分块布局' }
+    },
+    {
+      path: '/error', name: 'error', component: Error, meta: { title: '页面数据异常' }
     }
   ]
 })
