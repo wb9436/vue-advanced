@@ -241,3 +241,56 @@ mutations：提交状态修改。也就是set、get中的set，这是vuex中唯�
 actions：和mutations类似。不过actions支持异步操作。第一个参数默认是和store具有相同参数属性的对象。外部调用方式：store.dispatch('nameAsyn')。
 modules：store的子模块，内容就相当于是store的一个实例。调用方式和前面介绍的相似，只是要加上当前子模块名，如：store.a.getters.xxx()。
 ```
+
+## 十三、常用数据存储
+#### 1.存储到Cookie中，需要加载模块 `npm install js-cookie --save`，在需要使用的页面引入 `import Cookies from 'js-cookie'`，使用方法如下：
+```
+1、存储cookie：
+  (1).创建一个在整个网站上有效的cookie
+     Cookies.set('key', 'value');
+  (2).创建一个从现在起7天后过期的cookie，在整个站点上有效：
+     Cookies.set('key', 'value', { expires: 7 });
+  (3).创建一个过期的cookie，对当前页面的路径有效：
+     Cookies.set('key', 'value', { expires: 7, path: '' });
+
+2、读取cookie：
+  (1).根据key获取值：
+      Cookies.get('key'); // => 'value'
+      Cookies.get('nothing'); // => undefined
+  (2).阅读所有可见的cookie：
+      Cookies.get(); // => { key: 'value' }
+
+3、删除cookie：
+   Cookies.remove('key');
+```
+#### 2.存储到localStorage中，Vue中存储到localStorage与H5一致，在使用localStorage存储JSON数据时需要先将数据转成JSON字符串`JSON.stringify()`，取值后需要`JSON.parse()`转成JSON数据再进行操作：
+```
+1、存储：
+   localStorage.setItem('key', 'value');
+
+2、读取：
+   localStorage.getItem('key'); // => 'value'
+
+3、删除：
+   localStorage.removeItem('key');
+```
+#### 3.存储到sessionStorage中，sessionStorage 用于临时保存同一窗口(或标签页)的数据，在关闭窗口或标签页之后将会删除这些数据，存储JSON数据处理方式同localStorage。
+
+```
+1、方法：
+   sessionStorage.key(int index) //返回当前 sessionStorage 对象的第index序号的key名称。若没有返回null。
+  
+   sessionStorage.getItem(string key) //返回键名(key)对应的值(value)。若没有返回null。
+  
+   sessionStorage.setItem(string key, string value) //该方法接受一个键名(key)和值(value)作为参数，将键值对添加到存储中；如果键名存在，则更新其对应的值。
+  
+   sessionStorage.removeItem(string key) //将指定的键名(key)从 sessionStorage 对象中移除。
+  
+   sessionStorage.clear() //清除 sessionStorage 对象所有的项。
+
+2、读取：
+   (1).通过getItem()方法取值：
+       sessionStorage.getItem('key'); // => 'value'
+   (2).通过属性方式取值：
+       sessionStorage['testKey']; // => 'value'
+```

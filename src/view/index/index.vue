@@ -17,9 +17,9 @@
       }
     },
     created () {
-      const { isWeiXin, logInfo, windowHeight } = this.$store.state.app
-      console.log(isWeiXin, logInfo, windowHeight)
-      console.log(this.$store.state.app.logInfo)
+      console.log(this.$store.state.token) //获取不到值
+      const { isWeiXin, logInfo, windowHeight, token } = this.$store.state.app
+      console.log(isWeiXin, logInfo, windowHeight, token)
     },
     methods: {
       clickLifeCycle (id) {
