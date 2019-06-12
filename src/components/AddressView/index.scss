@@ -97,6 +97,7 @@
     .area-item {
       width: 100%;
       height: 40Px;
+      @include ellipsis;
       text-align: center;
       line-height: 40Px;
       cursor: pointer;

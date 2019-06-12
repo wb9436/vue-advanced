@@ -1,6 +1,6 @@
 <template>
-  <div :class="isOpened ? 'address-layout':'address-layout address-layout--closed'" @touchmove="handleTouchMove">
-    <div class='address-layout__overlay' @click="handleCancel"/>
+  <div :class="isOpened ? 'address-layout':'address-layout address-layout--closed'">
+    <div class='address-layout__overlay' @click="handleCancel" />
     <div class='address-layout__container'>
       <div class='layout-header'>
         <div class='cancel' @click="handleCancel">取消</div>
@@ -9,18 +9,18 @@
       </div>
       <div class='layout-body'>
         <div class='address-scroll'>
-          <div class='area-box'></div>
-          <div class='area-container' @scroll="onProScroll" @touchstart="onTouchStart('pro')">
+          <div class='area-box' @touchmove="handleTouchMove"></div>
+          <div class='area-container' id="pro"  @scroll="onProScroll" @touchmove="handleTouchMove" @touchstart="onTouchStart('pro')">
             <div class='area-list'>
               <div :key="index" class='area-item' v-for="(item, index) in pro.district">{{item}}</div>
             </div>
           </div>
-          <div class='area-container' @scroll="onCityScroll" @touchstart="onTouchStart('city')">
+          <div class='area-container' id="city" @scroll="onCityScroll" @touchmove="handleTouchMove" @touchstart="onTouchStart('city')">
             <div class='area-list'>
               <div :key="index" class='area-item' v-for="(item, index) in city.district">{{item}}</div>
             </div>
           </div>
-          <div class='area-container' @scroll="onAreaScroll" @touchstart="onTouchStart('area')">
+          <div class='area-container' id="area" @scroll="onAreaScroll" @touchmove="handleTouchMove" @touchstart="onTouchStart('area')">
             <div class='area-list'>
               <div :key="index" class='area-item' v-for="(item, index) in area.district">{{item}}</div>
             </div>
@@ -87,7 +87,7 @@
     methods: {
       handleTouchMove (e) {
         e.stopPropagation()
-        e.preventDefault()
+        // e.preventDefault()
       },
       handleInitData (address) {
         const addArr = address.split(/\s+/)
@@ -98,6 +98,21 @@
         this.pro = proInfo
         this.city = cityInfo
         this.area = areaInfo
+
+        this.$nextTick(() => {
+          const proView = this.$el.querySelector('#pro')
+          if (proView) {
+            proView.scrollTop = proInfo.index * 40
+          }
+          const cityView = this.$el.querySelector('#city')
+          if (cityView) {
+            cityView.scrollTop = cityInfo.index * 40
+          }
+          const areaView = this.$el.querySelector('#area')
+          if (areaView) {
+            areaView.scrollTop = areaInfo.index * 40
+          }
+        })
       },
       onTouchStart (type) {
         if (type === 'pro') {
@@ -115,21 +130,15 @@
         }
       },
       onProScroll (e) {
-        const scrollTop = e.target.scrollTop
-        this.onScroll('pro', scrollTop)
+        this.onScroll('pro', e.target.scrollTop)
       },
       onCityScroll (e) {
-        const scrollTop = e.target.scrollTop
-        this.onScroll('city', scrollTop)
+        this.onScroll('city', e.target.scrollTop)
       },
       onAreaScroll (e) {
-        const scrollTop = e.target.scrollTop
-        this.onScroll('area', scrollTop)
+        this.onScroll('area', e.target.scrollTop)
       },
       onScroll (type, scrollTop) {
-        console.log(this.proMove)
-        console.log(this.cityMove)
-        console.log(this.areaMove)
         let canScroll = false
         if (type === 'pro' && this.proMove) {
           canScroll = true
@@ -163,6 +172,17 @@
 
               this.city = tempCity
               this.area = tempArea
+
+              this.$nextTick(() => {
+                const cityView = this.$el.querySelector('#city')
+                if (cityView) {
+                  cityView.scrollTop = tempCity.index * 40
+                }
+                const areaView = this.$el.querySelector('#area')
+                if (areaView) {
+                  areaView.scrollTop = tempArea.index * 40
+                }
+              })
             }
             break
           case 'city'://市带动区变化
@@ -173,6 +193,13 @@
               let tempArea1 = DistrictsUtils.area(null, pid, cid)
 
               this.area = tempArea1
+
+              this.$nextTick(() => {
+                const areaView = this.$el.querySelector('#area')
+                if (areaView) {
+                  areaView.scrollTop = tempArea1.index * 40
+                }
+              })
             }
             break
           case 'area':
@@ -186,7 +213,10 @@
         this.$emit('onCancel')
       },
       handleConfirm () {
-
+        let address = `${this.pro.district[this.pro.index]} ` +
+          `${this.city.district[this.city.index]} ` +
+          `${this.area.district[this.area.index]}`
+        this.$emit('onConfirm', address)
       }
     }
   }

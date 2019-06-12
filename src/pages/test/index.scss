@@ -10,3 +10,11 @@
   border: 2px solid $color-line;
   @include sc(36px, $color-big);
 }
+
+.test-page {
+  height: 800px;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}

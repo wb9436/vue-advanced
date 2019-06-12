@@ -1,8 +1,8 @@
 <template>
-  <div class="page">
+  <div :class="isOpened ? 'page test-page overflow-hidden':'page test-page'">
     <div class="btn" @click="onOpenAddressView">{{address}}</div>
 
-    <address-view :address="address" :is-opened="isOpened" @onCancel="onCloseAddressView" />
+    <address-view :address="address" :is-opened="isOpened" @onCancel="onCloseAddressView" @onConfirm="onConfirmAddress" />
   </div>
 </template>
 
@@ -27,6 +27,10 @@
       },
       onCloseAddressView () {
         this.isOpened = false
+      },
+      onConfirmAddress (address) {
+        this.isOpened = false
+        console.log(address)
       }
     }
   }
