@@ -1,11 +1,13 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Index from '../view/index/index'
+
 import LifeCycle from '../view/lifeCycle/lifeCycle'
 import Param from '../view/param/param'
 import Query from '../view/param/query'
 import Rest from '../view/param/rest'
 import HeightLayout from '../view/layout/heightLayout'
+import Secret from '../view/secret/index'
 
 import Error from '../pages/error/index'
 import Home from '../pages/home/index'
@@ -46,6 +48,9 @@ const router = new Router({
     },
     {
       path: '/layout/height', name: 'layout/height', component: HeightLayout, meta: { title: '测试高度分块布局' }
+    },
+    {
+      path: '/secret', name: 'secret', component: Secret, meta: { title: '数据加密测试' }
     },
     {
       path: '/error', name: 'error', component: Error, meta: { title: '页面数据异常' }

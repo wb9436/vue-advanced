@@ -294,3 +294,12 @@ modules：store的子模块，内容就相当于是store的一个实例。调用
    (2).通过属性方式取值：
        sessionStorage['testKey']; // => 'value'
 ```
+
+## 十四、常用数据加密：MD5、Base64、SHA256、AES等加密
+#### 1.加载模块
+```
+npm install js-base64 --save 
+npm install js-md5 --save 
+npm install js-sha256 --save
+npm install crypto-js --save
+```

@@ -5,6 +5,7 @@
     <div class="page-btn" @click="clickQueryTypeTransfer(1)">测试Vue Query传参</div>
     <div class="page-btn" @click="clickRestTypeTransfer(1)">测试Vue Rest传参</div>
     <div class="page-btn" @click="clickLayoutHeight(1)">测试高度分块布局</div>
+    <div class="page-btn" @click="clickTestSecret">数据加密解密测试</div>
   </div>
 </template>
 
@@ -17,9 +18,9 @@
       }
     },
     created () {
-      console.log(this.$store.state.token) //获取不到值
-      const { isWeiXin, logInfo, windowHeight, token } = this.$store.state.app
-      console.log(isWeiXin, logInfo, windowHeight, token)
+      // console.log(this.$store.state.token) //获取不到值
+      // const { isWeiXin, logInfo, windowHeight, token } = this.$store.state.app
+      // console.log(isWeiXin, logInfo, windowHeight, token)
     },
     methods: {
       clickLifeCycle (id) {
@@ -36,6 +37,9 @@
       },
       clickLayoutHeight (id) {
         this.$router.push({ path: '/layout/height', query: { id: id } })
+      },
+      clickTestSecret () {
+        this.$router.push({ path: '/secret' })
       }
     }
   }
